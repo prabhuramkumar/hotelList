@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import HotelListItem from './hotelListItem';
-import data from '../data.json';
 
 function HotelList(props){
 	const [hotelList, setHotelList] = useState(null);
@@ -35,11 +34,8 @@ function HotelList(props){
 			return(<p className="hotels__error">Error</p>)
 		}
     	if(hotelList && hotelList.length > 0) {
-    		
             return(
-                <ul className="hotels__list">
-	            	<HotelListItem></HotelListItem>
-	        	</ul> 
+        		<HotelListItem hotelList={hotelList}></HotelListItem>
             )
         }else
             return (<p className="hotels__nodata">No Hotel results</p>)
@@ -51,6 +47,5 @@ function HotelList(props){
    		</>
    )
 }
-
 
 export default HotelList;
