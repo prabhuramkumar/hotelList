@@ -71,23 +71,6 @@ describe('HotelListPage - Render Tests api call test', () => {
     });
   });
 
-  it('Should contain 1 HotelList when data has 1 hotel', () => {
-
-  });
-
-  it('should contain 5 HotelList when data has 5 hotels', done => {
-      global.fetch = jest.fn().mockImplementation(() => createPromise(data));
-      Wrapper = mount(<HotelListPage url={"http://url"}/>);
-      setImmediate(() => {
-        Wrapper.update();
-        expect(Wrapper.find('.list__item').length).toBe(5);
-        done();
-      });
-  });
-
-  it('should state have default list without price sorting.', () => {
-  });
-
   it('should state have price high-low when sorted descending', () => {
   });
 
