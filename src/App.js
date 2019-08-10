@@ -9,7 +9,7 @@ function App() {
       <header className="App__header">
         <img src={logo} className="App__logo" alt="logo" />
       </header>
-      <HotelList></HotelList>
+      <HotelList url={'https://api.myjson.com/bins/nyhez'}></HotelList>
     </div>
   );
 }
