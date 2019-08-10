@@ -11,7 +11,7 @@ function HotelList(props){
 	            <li key={item.id} className="list__item">
 		    		<div className="list__image">image</div>
 		    		<div className="list__content">content</div>
-		    		<div className="list__price">price</div>
+		    		<div className="list__price">{item.offer.displayPrice.amount}</div>
 		        </li>
 	          ))}
 	        </ul>

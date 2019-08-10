@@ -71,12 +71,27 @@ describe('HotelListPage - Render Tests api call test', () => {
     });
   });
 
-  it('should state have price high-low when sorted descending', () => {
-  });
+   describe('price sorting tests', () => {
+    beforeEach(done => {
+      global.fetch = jest.fn().mockImplementation(() => createPromise(data));
+        Wrapper = mount(<HotelListPage url={"http://url"}/>);
+        setImmediate(() => {
+          Wrapper.update();
+          expect(Wrapper.find('.hotels__list').length).toBe(1);
+          done();
+        });
+    });
 
-  it('should state have price low-high when sorted ascending', () => {
-  });
+    it('should state have price low-high when sorted descending', () => {
+      Wrapper.find('.hotels__pricefilter').simulate('change', { target: { value: 'low' } });
+      let sortedPrice = Wrapper.find('.list__price').first().text();
+      expect(sortedPrice).toBe("227");
+    });
 
-  it('should have re-rendered HotelList with price sorted.', () => {
-  });
+    it('should state have price high-low when sorted ascending', () => {
+      Wrapper.find('.hotels__pricefilter').simulate('change', { target: { value: 'high' } });
+      let sortedPrice = Wrapper.find('.list__price').first().text();
+      expect(sortedPrice).toBe("535");
+    });
+  })
 });

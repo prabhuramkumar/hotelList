@@ -1,16 +1,16 @@
-import {sortByAscending, sortByDecending} from '../utils/sortingUtils';
+import {sortByLowPrice, sortByHighPrice} from '../utils/sortingUtils';
+import data from '../data.json';
 
 describe('sorting tests', () => {
-  let Wrapper;
-
-  it('should sortByAscending order', () => {
-    const sortedList = sortByAscending();
-    expect(0).toBe(0)
+  it('should sortByLowPrice order', () => {
+    const clonedList = [...data.results];
+    const sortedList = clonedList.sort(sortByLowPrice);
+    expect(sortedList[0].offer.displayPrice.amount).toBe(227);
   });
 
-  it('should sortByAscending descending order', () => {
-    const sortedList = sortByDecending();
-    expect(0).toBe(0)
+  it('should sortByHighPrice descending order', () => {
+    const clonedList = [...data.results];
+    const sortedList = clonedList.sort(sortByHighPrice);
+    expect(sortedList[0].offer.displayPrice.amount).toBe(535);
   });
-
 });
