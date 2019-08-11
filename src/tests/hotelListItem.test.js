@@ -33,16 +33,30 @@ describe('hotelListItem Render Tests', () => {
     expect(Wrapper.find('.list__image img').length).toBe(1);
   });
 
-  it('should show star rating for star rated hotels', () => {
+  it('should not show circle/star rating when not aviliable', () => {
+    let newData = JSON.parse(JSON.stringify(sampleData));
+    newData.property.rating = '';
+    const Wrapper = shallow(<HotelListItem hotel={newData}/>);
+    expect(Wrapper.find('.list__rating').length).toBe(0);
   });
 
   it('should show circle rating for self rated hotels', () => {
+    const Wrapper = shallow(<HotelListItem hotel={sampleData}/>);
+    expect(Wrapper.find('.list__rating').text()).toContain(4.5);
+    expect(Wrapper.find('.list__rating').text()).toContain("self");
+  });
+
+  it('should show start rating for star rated hotels', () => {
+    const Wrapper = shallow(<HotelListItem hotel={data.results[2]}/>);
+    expect(Wrapper.find('.list__rating').text()).toContain(4);
+    expect(Wrapper.find('.list__rating').text()).toContain("star");
   });
 });
 
 describe('hotelListItem happy cases', () => {
   let sampleData = data.results[0];
   const Wrapper = shallow(<HotelListItem hotel={sampleData}/>);
+
   it('should show hotel name and address', () => {
     expect(Wrapper.find('.list__title').text()).toContain(sampleData.property.title);
   });

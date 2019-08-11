@@ -19,6 +19,16 @@ function HotelListItem(props){
 		}
 	}
 
+	const ratings = () => {
+		if(!property.rating){
+			return null;
+		}
+		const {ratingValue, ratingType} = property.rating;
+		return (
+			<p className="list__rating">{ratingType}: {ratingValue}</p>
+		)
+	}
+
 	const createListItem = ()=>{
 		if(!property.title || 
 			!offer.displayPrice.amount || 
@@ -33,7 +43,10 @@ function HotelListItem(props){
 			<>
 				<div className="list__image"><img src={property.url} alt={property.previewImage.caption} /></div>
 	    		<div className="list__content">
-	    			<h3 className="list__title">{property.title}</h3>
+	    			<div className="list__header">
+	    				<h3 className="list__title">{property.title}</h3>
+	    				{ratings()}
+	    			</div>
 	    			<p className="list__roomtype">{offer.name}</p>
 	    			{cancellation()}
 	    		</div>
