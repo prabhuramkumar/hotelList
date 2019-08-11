@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import HotelListPage from '../components/HotelListPage';
 import data from '../data.json';
-import { act } from 'react-dom/test-utils';
 
 describe('HotelListPage - Render Tests api call test', () => {
   let Wrapper;
@@ -51,7 +50,7 @@ describe('HotelListPage - Render Tests api call test', () => {
   });
 
   it('should not contain any HotelList and show No hotel to display message when data is empty', done => {
-    global.fetch = jest.fn().mockImplementation(() => createPromise([]));
+    global.fetch = jest.fn().mockImplementation(() => createPromise({}));
     Wrapper = mount(<HotelListPage url={"http://url"}/>);
     setImmediate(() => {
       Wrapper.update();
@@ -61,7 +60,7 @@ describe('HotelListPage - Render Tests api call test', () => {
     });
   });
 
-  it('should show page with dropdown, HotelList and number of hotels message when success.', done => {
+  it('should show HotelList when success.', done => {
     global.fetch = jest.fn().mockImplementation(() => createPromise(data));
     Wrapper = mount(<HotelListPage url={"http://url"}/>);
     setImmediate(() => {
@@ -85,13 +84,13 @@ describe('HotelListPage - Render Tests api call test', () => {
     it('should state have price low-high when sorted descending', () => {
       Wrapper.find('.hotels__pricefilter').simulate('change', { target: { value: 'low' } });
       let sortedPrice = Wrapper.find('.list__price').first().text();
-      expect(sortedPrice).toBe("227");
+      expect(sortedPrice).toContain("227");
     });
 
     it('should state have price high-low when sorted ascending', () => {
       Wrapper.find('.hotels__pricefilter').simulate('change', { target: { value: 'high' } });
       let sortedPrice = Wrapper.find('.list__price').first().text();
-      expect(sortedPrice).toBe("535");
+      expect(sortedPrice).toContain("535");
     });
   })
 });

@@ -1,17 +1,15 @@
 import React from 'react';
+import HotelListItem from './hotelListItem';
 
 function HotelList(props){
 
 	const createHotelList = () => {
-
 	    if (props.hotelList && props.hotelList.length > 0) {
 	      return (
 	        <ul className="hotels__list">
 	          {props.hotelList.map(item => (
 	            <li key={item.id} className="list__item">
-		    		<div className="list__image">image</div>
-		    		<div className="list__content">content</div>
-		    		<div className="list__price">{item.offer.displayPrice.amount}</div>
+	            	<HotelListItem hotel={item}></HotelListItem>
 		        </li>
 	          ))}
 	        </ul>
