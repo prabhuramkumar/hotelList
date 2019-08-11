@@ -18,7 +18,7 @@ describe('hotelListItem Render Tests', () => {
     expect(Wrapper.find('.list__missing').length).toBe(1);
   });
 
-  it('should show Hotel list when only image is misssing.', () => {
+  it('should show Hotel list even when only image is misssing.', () => {
     let newData = JSON.parse(JSON.stringify(sampleData));
     newData.property.previewImage = '';
     const Wrapper = shallow(<HotelListItem hotel={newData}/>);
@@ -30,7 +30,7 @@ describe('hotelListItem Render Tests', () => {
     let newData = JSON.parse(JSON.stringify(sampleData));
     newData.property.previewImage = '';
     const Wrapper = shallow(<HotelListItem hotel={newData}/>);
-    expect(Wrapper.find('.list__image img').length).toBe(1);
+    expect(Wrapper.find('.placeholder__image').length).toBe(1);
   });
 
   it('should not show circle/star rating when not aviliable', () => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 function HotelListItem(props){
 	let {offer, property} = props.hotel;
@@ -29,6 +30,20 @@ function HotelListItem(props){
 		)
 	}
 
+	const propertyImage = () => {
+		let {url, caption} = property.previewImage;
+		let placeholderUrl = "../placeholder.png";
+		let imageClass; 
+		if(!property.previewImage){
+		 	url = placeholderUrl;
+			caption = property.title;
+			imageClass = "placeholder__image";
+		}
+		return(
+			<img className={imageClass} src={url} alt={caption} />
+		)
+	}
+
 	const createListItem = ()=>{
 		if(!property.title || 
 			!offer.displayPrice.amount || 
@@ -41,7 +56,9 @@ function HotelListItem(props){
 		}
 		return (
 			<>
-				<div className="list__image"><img src={property.url} alt={property.previewImage.caption} /></div>
+				<div className="list__image">
+					{propertyImage()}
+				</div>
 	    		<div className="list__content">
 	    			<div className="list__header">
 	    				<h3 className="list__title">{property.title}</h3>
@@ -65,6 +82,10 @@ function HotelListItem(props){
         </>
    )
 }
+
+HotelListItem.propTypes = {
+  hotel: PropTypes.object.isRequired
+};
 
 
 export default HotelListItem;

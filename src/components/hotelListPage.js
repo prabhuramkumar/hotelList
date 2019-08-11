@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HotelList from './hotelList';
+import PropTypes from 'prop-types';
 import {sortByLowPrice, sortByHighPrice} from '../utils/sortingUtils';
 
 function HotelListPage(props){
@@ -78,5 +79,9 @@ function HotelListPage(props){
    		</div>
    )
 }
+
+HotelListPage.propTypes = {
+  url: PropTypes.string.isRequired
+};
 
 export default HotelListPage;

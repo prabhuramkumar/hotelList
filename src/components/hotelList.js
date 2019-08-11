@@ -1,5 +1,6 @@
 import React from 'react';
 import HotelListItem from './hotelListItem';
+import PropTypes from 'prop-types';
 
 function HotelList(props){
 
@@ -25,6 +26,10 @@ function HotelList(props){
         </>
    )
 }
+
+HotelList.propTypes = {
+  hotelList: PropTypes.array.isRequired
+};
 
 
 export default HotelList;
