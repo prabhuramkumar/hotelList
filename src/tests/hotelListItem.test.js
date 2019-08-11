@@ -51,6 +51,13 @@ describe('hotelListItem Render Tests', () => {
     expect(Wrapper.find('.list__rating').text()).toContain(4);
     expect(Wrapper.find('.list__rating').text()).toContain("star");
   });
+
+  it('should show address with comma for more than one line and no comma for last line.', () => {
+    const Wrapper = shallow(<HotelListItem hotel={data.results[0]}/>);
+    expect(Wrapper.find('.list__address span').first().text()).toContain(',');
+    expect(Wrapper.find('.list__address span').last().text()).not.toContain(',');
+  });
+
 });
 
 describe('hotelListItem happy cases', () => {
@@ -85,5 +92,10 @@ describe('hotelListItem happy cases', () => {
   it('should not show savings in booking price when not aviliable', () => {
     const Wrapper = shallow(<HotelListItem hotel={data.results[2]}/>);
     expect(Wrapper.find('.list__price-savings').length).toBe(0);
+  });
+
+  it('should promotion type when aviliable', () => {
+    const Wrapper = shallow(<HotelListItem hotel={data.results[2]}/>);
+    expect(Wrapper.find('.list__promotion').text()).toBe('Red Hot');
   });
 });

@@ -15,7 +15,7 @@ function HotelListItem(props){
 	const savings = () => {
 		if(offer.savings !== null){
 			return (
-				<p className="list__price-savings">${offer.savings.amount}</p>
+				<p className="list__price-savings">Save: ${offer.savings.amount}</p>
 			)
 		}
 	}
@@ -27,6 +27,53 @@ function HotelListItem(props){
 		const {ratingValue, ratingType} = property.rating;
 		return (
 			<p className="list__rating">{ratingType}: {ratingValue}</p>
+		)
+	}
+
+	const address = () => {
+		let comma;
+		return (
+			<div className="list__address">
+				{property.address.map((item, index) => { 
+					comma = (index+1) < property.address.length ? ", " : ''
+					return(
+						<span key={index}>{item}{comma}</span>
+					)}
+				)}
+			</div>
+		)
+	}
+
+	const imageSection = () => {
+		return (
+			<div className="list__image">
+				{propertyImage()}
+				<span className="list__promotion">{offer.promotion.title}</span>
+			</div>
+		)
+	}
+
+	const contentSection = () => {
+		return (
+			<div className="list__content">
+				<div className="list__header">
+					<h3 className="list__title">{property.title}</h3>
+					{address()}
+					{ratings()}
+				</div>
+				<p className="list__roomtype">{offer.name}</p>
+				{cancellation()}
+			</div>
+		)
+	}
+
+	const priceSection = () => {
+		return (
+			<div className="list__price">
+				<p className="list__price--duration">1 night total ({offer.displayPrice.currency})</p>
+				<p className="list__price-amount">${offer.displayPrice.amount}</p>
+				{savings()}
+			</div>
 		)
 	}
 
@@ -56,22 +103,9 @@ function HotelListItem(props){
 		}
 		return (
 			<>
-				<div className="list__image">
-					{propertyImage()}
-				</div>
-	    		<div className="list__content">
-	    			<div className="list__header">
-	    				<h3 className="list__title">{property.title}</h3>
-	    				{ratings()}
-	    			</div>
-	    			<p className="list__roomtype">{offer.name}</p>
-	    			{cancellation()}
-	    		</div>
-	    		<div className="list__price">
-	    			<p className="list__price--duration">1 night total ({offer.displayPrice.currency})</p>
-	    			<p className="list__price-amount">${offer.displayPrice.amount}</p>
-	    			{savings()}
-	    		</div>
+				{imageSection()}
+				{contentSection()}
+				{priceSection()}
 			</>
 		)
 	}	
