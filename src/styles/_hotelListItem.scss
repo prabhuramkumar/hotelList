@@ -1,0 +1,56 @@
+.hotels__list {
+	.list__item {
+		display: flex;
+		font-size: $font-size-regular;
+		border-bottom: 1px solid $color-lighter-grey;
+		padding: 10px;
+	}
+
+	.list__title {
+	}
+
+	.list__image {
+		width: 150px;
+		overflow: hidden;
+	}
+
+	.list__content {
+		display: flex;
+		flex-direction: column;
+		min-width: 40%;
+		margin: 0 20px;
+
+	}
+
+	.list__price {
+		display: flex;
+		flex-direction: column;
+  		justify-content: flex-end;
+	}
+
+	.list__price-amount {
+		font-size: $font-size-large;
+		margin: 10px 0;
+	}
+
+	.list__price--duration {
+		color: $color-light-grey;
+		font-size: $font-size-small;
+
+	}
+
+	.list__price-savings {
+		color: $color-red;
+	}
+
+	.list__roomtype {
+		color: $color-red;
+		text-decoration: underline;
+		margin-top: 10px;
+	}
+
+	.list__cancellation {
+		color: green;
+		align-self: flex-end;
+	}
+}

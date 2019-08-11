@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './qantas-logo.png';
 import HotelListPage from './components/hotelListPage';
-import './App.css';
 
 function App() {
   return (

@@ -1,0 +1,19 @@
+$color-light-grey: #666666;
+$color-lighter-grey: #cccccc;
+$color-red: red;
+$color-green: green;
+$color-soft-black: #333333;
+
+$font-size-regular: 18px;
+$font-size-small: 14px;
+$font-size-large: 24px;
+
+.App__logo {
+	width: 200px;
+}
+.App {
+	margin: 0 auto;
+	width: 80%;
+	font-family: 'Arial';
+	color: $color-soft-black;
+}

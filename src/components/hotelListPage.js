@@ -55,8 +55,8 @@ function HotelListPage(props){
 		if(hotelList && hotelList.length > 0) {
             return(
             	<>
-            		<div className="">
-	            		<p> {hotelList.length} results.</p>
+            		<div className="hotels__header">
+	            		<p className="hotels__count"> {hotelList.length} results.</p>
 	            		<select className="hotels__pricefilter" onChange={sortByPrice}>
 	            			<option value="default">Select</option>
 	            			<option value="low">Price: low to high</option>
