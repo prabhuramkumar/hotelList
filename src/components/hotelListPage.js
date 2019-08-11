@@ -24,7 +24,7 @@ function HotelListPage(props){
 		if(props.url){
 			fetchHotels();
 		}
-	}, []);
+	}, [props.url]);
 
 	const sortByPrice = (e) => {
 		let priceFilterOptions = {
@@ -38,15 +38,20 @@ function HotelListPage(props){
 		}
 	}
 
-	const renderHotelList = () => {
-
-		if(loading){
-			return(<p className="hotels__loading">Loading...</p>)
-		}
+	const renderError = () => {
 		if(error){
 			return(<p className="hotels__error">Error</p>)
 		}
-    	if(hotelList && hotelList.length > 0) {
+	}
+
+	const renderLoading = () => {
+		if(loading){
+			return(<p className="hotels__loading">Loading...</p>)
+		}
+	}
+
+	const renderHotelList = () =>{
+		if(hotelList && hotelList.length > 0) {
             return(
             	<>
             		<div className="">
@@ -60,13 +65,16 @@ function HotelListPage(props){
         			<HotelList hotelList={hotelList}></HotelList>
         		</>
             )
-        }else
+        }else {
             return (<p className="hotels__nodata">No Hotel results</p>)
         }
+	}
 
    return(
    		<div className="page__hotelsList">
-   			{renderHotelList()}
+   			{renderLoading()}
+			{renderError()}
+			{renderHotelList()}
    		</div>
    )
 }
