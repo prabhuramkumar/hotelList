@@ -8,7 +8,7 @@ function App() {
       <header className="App__header">
         <img src={logo} className="App__logo" alt="logo" />
       </header>
-      <HotelListPage url={'https://api.myjson.com/bins/nyhez'}></HotelListPage>
+      <HotelListPage url={'https://api.myjson.com/bins/nyhez'} keyword="sydney"></HotelListPage>
     </div>
   );
 }

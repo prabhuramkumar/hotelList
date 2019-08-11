@@ -41,7 +41,7 @@ function HotelListPage(props){
 
 	const renderError = () => {
 		if(error){
-			return(<p className="hotels__error">Error</p>)
+			return(<p className="hotels__error">Hotel list loading error!</p>)
 		}
 	}
 
@@ -56,7 +56,7 @@ function HotelListPage(props){
             return(
             	<>
             		<div className="hotels__header">
-	            		<p className="hotels__count"> {hotelList.length} results.</p>
+	            		<p className="hotels__count"> {hotelList.length} results for {props.keyword}.</p>
 	            		<select className="hotels__pricefilter" onChange={sortByPrice}>
 	            			<option value="default">Select</option>
 	            			<option value="low">Price: low to high</option>
@@ -81,7 +81,8 @@ function HotelListPage(props){
 }
 
 HotelListPage.propTypes = {
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  keyword: PropTypes.string.isRequired
 };
 
 export default HotelListPage;
