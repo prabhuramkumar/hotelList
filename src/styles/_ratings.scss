@@ -1,0 +1,35 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+.hotel__ratings--fieldset { 
+  border: none;
+  float: left;
+}
+
+.hotel__ratings--fieldset > input { display: none; } 
+.hotel__ratings--fieldset > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.hotel__ratings--fieldset > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.hotel__ratings--fieldset > label { 
+  color: #ddd; 
+  float: right; 
+}
+
+
+.hotel__ratings--fieldset > input:checked ~ label, /* show gold star when clicked */
+.hotel__ratings--fieldset:not(:checked) > label:hover, /* hover current star */
+.hotel__ratings--fieldset:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.hotel__ratings--fieldset > input:checked + label:hover, /* hover current star when changing rating */
+.hotel__ratings--fieldset > input:checked ~ label:hover,
+.hotel__ratings--fieldset > label:hover ~ input:checked ~ label, /* lighten current selection */
+.hotel__ratings--fieldset > input:checked ~ label:hover ~ label { color: #FFED85;  } 

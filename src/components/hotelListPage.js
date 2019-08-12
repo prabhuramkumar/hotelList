@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HotelList from './hotelList';
 import PropTypes from 'prop-types';
 import {sortByLowPrice, sortByHighPrice} from '../utils/sortingUtils';
+import data from '../data.json';
 
 function HotelListPage(props){
 	const [hotelList, setHotelList] = useState(null);

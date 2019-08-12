@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import Ratings from './ratings';
 
 function HotelListItem(props){
 	let {offer, property} = props.hotel;
@@ -20,6 +21,10 @@ function HotelListItem(props){
 		}
 	}
 
+	const handleRatingChange = ()=>{
+		return true;
+	}
+
 	const ratings = () => {
 		if(!property.rating){
 			return null;
@@ -34,11 +39,13 @@ function HotelListItem(props){
 		let comma;
 		return (
 			<div className="list__address">
-				{property.address.map((item, index) => { 
-					comma = (index+1) < property.address.length ? ", " : ''
-					return(
-						<span key={index}>{item}{comma}</span>
-					)}
+				{
+					property.address.map((item, index) => { 
+						comma = (index+1) < property.address.length ? ", " : ''
+						return(
+							<span key={index}>{item}{comma}</span>
+						)
+					}
 				)}
 			</div>
 		)
