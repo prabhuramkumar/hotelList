@@ -52,7 +52,6 @@ describe('Ratings test', () => {
       hotelId={"qantas"} 
       ratingType = {"self"}
       handleRatingChange={mockFunction} />);
-    
     expect(Wrapper.find('[checked="checked"]').props().value).toBe(3);
   });
 
@@ -63,21 +62,40 @@ describe('Ratings test', () => {
       hotelId={"qantas"} 
       ratingType = {"self"}
       handleRatingChange={mockFunction} />);
-    console.log(Wrapper.debug());
     Wrapper.find('input').first().simulate('change');
     expect(mockFunction).toHaveBeenCalledWith(5.0);
   });
 
-  it.only('should call handleRatingChange with new selected rating on click on last star', () => {
+  it('should call handleRatingChange with new selected rating on click on last star', () => {
     const mockFunction = jest.fn();
     const Wrapper = mount(<Ratings 
       rating={0.5} 
       hotelId={"qantas"} 
       ratingType = {"self"}
       handleRatingChange={mockFunction} />);
-    console.log(Wrapper.debug());
     Wrapper.find('input').last().simulate('change');
     expect(mockFunction).toHaveBeenCalledWith(0.5);
+  });
+
+  it('should show circle ratings for self rated properties', () => {
+    const mockFunction = jest.fn();
+    const Wrapper = mount(<Ratings 
+      rating={0.5} 
+      hotelId={"qantas"} 
+      ratingType = {"self"}
+      handleRatingChange={mockFunction} />);
+    expect(Wrapper.find('.hotel__style--circle').length).toBe(1);
+  });
+
+  it('should show star ratings for star rated properties', () => {
+    const mockFunction = jest.fn();
+    const Wrapper = mount(<Ratings 
+      rating={0.5} 
+      hotelId={"qantas"} 
+      ratingType = {"star"}
+      handleRatingChange={mockFunction} />);
+    expect(Wrapper.find('.hotel__style--star').length).toBe(1);
+    expect(Wrapper.find('.hotel__style--circle').length).toBe(0);
   });
   
 });

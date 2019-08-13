@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 function Ratings(props){
 	const [currentRating, setCurrentRating] = useState(props.rating);
+	const starTypes = {
+		"self": "hotel__style--circle",
+		"star": "hotel__style--star"
+	}
 
 	const handleClick = (newRating) => {
 		setCurrentRating(newRating);
@@ -57,13 +61,14 @@ function Ratings(props){
 
 						return(
 							<React.Fragment key={key}>
-								{generateStars(fullStarId, value, fullStarChecked, "full")}
-			    				{value !== 5 ?
+								{value !== 5 ?
 			    					<>
 		    							{generateStars(halfStarId, halfStarValue, halfStarChecked, "half")}
 			    					</>
 			    					:null
 			    				}
+								{generateStars(fullStarId, value, fullStarChecked, "full")}
+			    				
 			    				{value === 1 ?
 			    					<>
 			    						{generateStars(firsHalfStarId, firstHalfStarValue, firstHalfStarChecked, "half")}
@@ -79,7 +84,7 @@ function Ratings(props){
 	}
 	return (
 		<div className="hotel__ratings">
-			<fieldset className="hotel__ratings--fieldset">
+			<fieldset className={`hotel__ratings--fieldset  + ${starTypes[props.ratingType]}`}>
 			    {generateStarsHalfAndFull()}
 			</fieldset>
 		</div>

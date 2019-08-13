@@ -40,18 +40,6 @@ describe('hotelListItem Render Tests', () => {
     expect(Wrapper.find('.list__rating').length).toBe(0);
   });
 
-  it('should show circle rating for self rated hotels', () => {
-    const Wrapper = shallow(<HotelListItem hotel={sampleData}/>);
-    expect(Wrapper.find('.list__rating').text()).toContain(4.5);
-    expect(Wrapper.find('.list__rating').text()).toContain("self");
-  });
-
-  it('should show start rating for star rated hotels', () => {
-    const Wrapper = shallow(<HotelListItem hotel={data.results[2]}/>);
-    expect(Wrapper.find('.list__rating').text()).toContain(4);
-    expect(Wrapper.find('.list__rating').text()).toContain("star");
-  });
-
   it('should show address with comma for more than one line and no comma for last line.', () => {
     const Wrapper = shallow(<HotelListItem hotel={data.results[0]}/>);
     expect(Wrapper.find('.list__address span').first().text()).toContain(',');

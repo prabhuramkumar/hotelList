@@ -15,7 +15,7 @@
           "imageType": "PRIMARY"
         },
         "rating": {
-          "ratingValue": 4.5,
+          "ratingValue": 4,
           "ratingType": "self"
         }
       },
@@ -91,7 +91,7 @@
           "imageType": "PRIMARY"
         },
         "rating": {
-          "ratingValue": 4,
+          "ratingValue": 4.5,
           "ratingType": "star"
         }
       },
