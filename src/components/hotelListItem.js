@@ -31,7 +31,10 @@ function HotelListItem(props){
 		}
 		const {ratingValue, ratingType} = property.rating;
 		return (
-			<p className="list__rating">{ratingType}: {ratingValue}</p>
+			<Ratings rating={ratingValue} 
+			hotelId={props.hotel.id} 
+			ratingType = {ratingType}
+			handleRatingChange={handleRatingChange} />
 		)
 	}
 
