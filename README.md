@@ -7,7 +7,9 @@ Progressive/Iterative approach, unit tests, scenrios, asynchronous testing, TDD,
 Prod build, SCSS to CSS, Using middlewares and Redux, support libraries like lodash etc (as not required),  
 
 ### `Things to note`
-There would a act function warning while runnning unit tests, seems to be known issue on react side. Tried to fix it but couldn't.
+1. There would a act function warning while runnning unit tests, seems to be known issue on react side. Tried to fix it but couldn't.
+
+2. App uses the data from a temperory hosting service from https://api.myjson.com/bins/12878r, for any reason not working please enable the local data.json or let me know.
 
 ## Available Scripts
 
