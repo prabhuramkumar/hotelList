@@ -31,7 +31,13 @@
   &> .half:before { 
     content: "\f042";
     transform: rotate(180deg);
-    margin: 3px 5px;
+    margin-top: 3px;
+  }
+
+  @-moz-document url-prefix() {
+    &> .half:before { 
+      margin-top: 7px;
+    }
   }
 }
 

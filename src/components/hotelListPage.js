@@ -52,6 +52,10 @@ function HotelListPage(props){
 	}
 
 	const renderHotelList = () =>{
+		if(error || loading) {
+			return null;
+		}
+		
 		if(hotelList && hotelList.length > 0) {
             return(
             	<>

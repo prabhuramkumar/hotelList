@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### `Area of focus`
+Progressive/Iterative approach, unit tests, scenrios, asynchronous testing, TDD, modular, resuablity, functional approach vs Object/Class.
+
+### `out of focus`
+Prod build, SCSS to CSS, Using middlewares and Redux, support libraries like lodash etc (as not required),  
+
+### `Things to note`
+There would a act function warning while runnning unit tests, seems to be known issue on react side. Tried to fix it but couldn't.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -32,3 +41,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 Display price is final price which has savings applied on it already.
 Hotel not bookable when any of title, price, address is missing.
 Hotel bookable when only image is missing and other details aviliable with a placeholder.
+
